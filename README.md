@@ -65,13 +65,15 @@ Mean Absolute Error on Test Set (MAE): 87485 euro
 XGBoost gave the best prediction results for this dataset.
 
 ```
-```
+
 In the train.py file I wrote a script to preprocess the data and create a XGBoost model. The model and associated scaler are saved in the model folder.
 
 The predict.py file loads the saved model and can be used to predict the price of a new house. 
-Note:   
-This file is currently still under construction. The output of the predicted price is always the same if you adjust the parameters. I need to look further into this problem
-```
+
+Note: 
+
+The predict.py file is currently still under construction. The output of the predicted price is always the same if you adjust the parameters. I need to look further into this problem
+
 # Timeline
 
 This project took five days for completion. The 5 days included 3 days of studying.

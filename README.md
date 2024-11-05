@@ -21,7 +21,6 @@ After first scraping 10000 houses from www.immoweb.be and then analyzing the dat
 .
 ├── data/
 │   └── clean_data_with_region.csv
-├── .gitignore
 ├── model/
 │   ├── model_xgb.json
 │   └── scaler.joblib

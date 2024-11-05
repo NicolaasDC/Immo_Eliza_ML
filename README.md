@@ -1,13 +1,13 @@
 # Immo_Eliza_ML
 
 # Description
-```
+
 The real estate company Immo Eliza asked you to create a machine learning model to predict prices of real estate properties in Belgium.
 
 This project is a continuation of immo-eliza-scraping (https://github.com/NicolaasDC/immo-eliza-scraping) and immo-eliza-data-analysis project (https://github.com/VB1395/immoeliza_data_analysis)
 
 After first scraping 10000 houses from www.immoweb.be and then analyzing the data. The project continues with creating a machine leaning model for the data.
-```
+
 
 # Objectives
 ```
@@ -69,14 +69,16 @@ XGBoost gave the best prediction results for this dataset.
 In the train.py file I wrote a script to preprocess the data and create a XGBoost model. The model and associated scaler are saved in the model folder.
 
 The predict.py file loads the saved model and can be used to predict the price of a new house. 
-Note:   
-This file is currently still under construction. The output of the predicted price is always the same if you adjust the parameters. I need to look further into this problem
+
+Note: 
+
+The predict.py file is currently still under construction. The output of the predicted price is always the same if you adjust the parameters. I need to look further into this problem
 
 # Timeline
 
-This project took five days for completion. The 5 days included the first 3 days
+This project took five days for completion. The 5 days included 3 days of studying.
 
 # Addition info
 
-This project was done as part of the AI Bootcamp at BeCode.org.
+This project was done as part of the AI and data science Bootcamp at BeCode.org.
 

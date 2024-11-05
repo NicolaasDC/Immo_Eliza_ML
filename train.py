@@ -93,8 +93,3 @@ y_pred_xgb = xgb_model.predict(X_test)
 mae_xgb = mean_absolute_error(y_test, y_pred_xgb)
 print("Mean Absolute Error on Test Set (MAE):", mae_xgb)
 
-new_house = np.array([9900, 2000, 5, 150, 1, 150, 1, 4,  1]).reshape(1, -1)  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing','State_encoded', 'Type of property_house']
-new_data_scaled = scaler.fit_transform(new_house)
-
-predicted_price = xgb_model.predict(new_data_scaled)
-print("Predicted Price:", predicted_price[0])

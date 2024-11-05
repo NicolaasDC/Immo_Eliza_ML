@@ -8,6 +8,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_absolute_error
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBRegressor
+import joblib
 
 
 # Read the csv file and create a dataframe
@@ -22,11 +23,11 @@ for column in X:
         X = X.drop(columns=[column])
         
 # Delete non relevant columns (Energy class uses different values in Flanders and Wallonia)        
-X = X.drop(columns=['Property ID', 'Locality name', 'Energy class', 'region'])
+X = X.drop(columns=['Property ID', 'Locality name', 'Energy class', 'region', 'Heating type'])
 
 # Impute missing data
 imputer_most_frequent = SimpleImputer(strategy='most_frequent')
-columns_to_impute_most_frequent = ['Number of rooms', 'kitchen', 'State of builing', 'Heating type', 'Double glazing']
+columns_to_impute_most_frequent = ['Number of rooms', 'kitchen', 'State of builing', 'Double glazing']
 imputer_mean = SimpleImputer(strategy='mean')
 columns_to_impute_mean = ['Construction year', 'Living area', 'Primary energy consumption']
 
@@ -46,9 +47,9 @@ enc = OneHotEncoder(sparse_output=False, drop='first').set_output(transform="pan
 
 # Apply fit method to the data frame
 
-encoded_data = enc.fit_transform(X[['Heating type', 'Type of property']])
+encoded_data = enc.fit_transform(X[['Type of property']])
 
-X = pd.concat([X.drop(columns=['Heating type', 'Type of property']).reset_index(drop=True), encoded_data.reset_index(drop=True)], axis=1)
+X = pd.concat([X.drop(columns=['Type of property']).reset_index(drop=True), encoded_data.reset_index(drop=True)], axis=1)
 
 # Convert Number of rooms columns to int values
 X['Number of rooms'] = X['Number of rooms'].astype('int')
@@ -60,7 +61,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Scale the X sets
 scaler = StandardScaler()
 
-import joblib
 joblib.dump(scaler, "scaler.joblib")
 
 X_train = scaler.fit_transform(X_train)
@@ -71,7 +71,7 @@ xgb_model = XGBRegressor(
     objective='reg:squarederror',  # Use square error for regression
     n_estimators=100,              # Number of boosting rounds
     learning_rate=0.2,             # Learning rate
-    max_depth=4,                   # Maximum depth of a tree
+    max_depth=4,                   # Maximum depth of a tree                        
     random_state=42
 )
 
@@ -88,15 +88,13 @@ print("XGBoost Test Score:", test_score)
 
 # Make predictions using the trained model
 y_pred_xgb = xgb_model.predict(X_test)
-print(X_test.shape)
 
 # Calculate Mean Absolute Error
 mae_xgb = mean_absolute_error(y_test, y_pred_xgb)
 print("Mean Absolute Error on Test Set (MAE):", mae_xgb)
 
-new_data = [[8300, 2000, 10, 150, 1, 150, 1, 4, 0, 0, 0, 0, 0, 1, 1]]  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing', 'State_encoded', 'Heating type_Electric', 'Heating type_Fuel oil','Heating type_Gas', 'Heating type_Pellet', 'Heating type_Solar','Heating type_Wood', 'Type of property_house']
-new_data_scaled = scaler.fit_transform(new_data)
+new_house = np.array([9900, 2000, 5, 150, 1, 150, 1, 4,  1]).reshape(1, -1)  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing','State_encoded', 'Type of property_house']
+new_data_scaled = scaler.fit_transform(new_house)
 
 predicted_price = xgb_model.predict(new_data_scaled)
 print("Predicted Price:", predicted_price[0])
-

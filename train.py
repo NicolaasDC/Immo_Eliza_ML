@@ -61,10 +61,10 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Scale the X sets
 scaler = StandardScaler()
 
-joblib.dump(scaler, "scaler.joblib")
-
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
+
+joblib.dump(scaler, "scaler.joblib")
 
 # Initialize the XGBRegressor model
 xgb_model = XGBRegressor(

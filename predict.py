@@ -11,13 +11,15 @@ import joblib
 model = XGBRegressor()
 
 # load a saved XGBRegressor model
-model.load_model("model\model_xgb.json")
+model.load_model("./model/model_xgb.json")
+
 # load the saved scaler, to apply the same scaler
-scaler = joblib.load("model\scaler.joblib")
+scaler = joblib.load("./model/scaler.joblib")
 
 # create a new house and scale it
-new_house = np.array([9900, 2000, 5, 150, 1, 150, 1, 4,  1]).reshape(1, -1)  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing','State_encoded', 'Type of property_house']
-new_data_scaled = scaler.fit_transform(new_house)
+new_house = np.array([9000, 2000, 5, 150, 1, 150, 1, 4,  1]).reshape(1, -1)  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing','State_encoded', 'Type of property_house']
+new_data_scaled = scaler.transform(new_house)
+
 
 # predict the price of the new house
 predicted_price = model.predict(new_data_scaled)

@@ -17,7 +17,7 @@ model.load_model("./model/model_xgb.json")
 scaler = joblib.load("./model/scaler.joblib")
 
 # create a new house and scale it
-new_house = np.array([9000, 2000, 5, 150, 1, 150, 1, 4,  1]).reshape(1, -1)  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing','State_encoded', 'Type of property_house']
+new_house = np.array([9860, 1900, 4, 150, 1, 450, 1, 4,  1]).reshape(1, -1)  #['Postal code', 'Construction year', 'Number of rooms', 'Living area','kitchen', 'Primary energy consumption', 'Double glazing','State_encoded', 'Type of property_house']
 new_data_scaled = scaler.transform(new_house)
 
 

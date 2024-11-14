@@ -14,7 +14,7 @@ After first scraping 10000 houses from www.immoweb.be and then analyzing the dat
 - Be able to preprocess data for machine learning.
 - Be able to apply a linear regression in a real-life context.
 - Be able to explore machine learning models for regression.
-- Be able to evaluate the performance of a model
+- Be able to evaluate the performance of a model.
 ```
 # Repo structure
 ```

@@ -1,22 +1,22 @@
 # Immo_Eliza_ML
 
-# Description
-```
+## 🏢 Description
+
 The real estate company Immo Eliza asked you to create a machine learning model to predict prices of real estate properties in Belgium.
 
-This project is a continuation of immo-eliza-scraping (https://github.com/NicolaasDC/immo-eliza-scraping) and immo-eliza-data-analysis project (https://github.com/VB1395/immoeliza_data_analysis)
+This project is a continuation of [immo-eliza-scraping](https://github.com/NicolaasDC/immo-eliza-scraping) and [immo-eliza-data-analysis](https://github.com/VB1395/immoeliza_data_analysis)
 
 After first scraping 10000 houses from www.immoweb.be and then analyzing the data. The project continues with creating a machine leaning model for the data.
-```
 
-# Objectives
+
+## 🚀 Objectives
 ```
 - Be able to preprocess data for machine learning.
 - Be able to apply a linear regression in a real-life context.
 - Be able to explore machine learning models for regression.
 - Be able to evaluate the performance of a model.
 ```
-# Repo structure
+## 📦 Repo structure
 ```
 .
 ├── data/
@@ -33,13 +33,13 @@ After first scraping 10000 houses from www.immoweb.be and then analyzing the dat
 └── README.md
 ```
 
-# Installation
+## 🔧 Installation
 
 Clone the repository to your local machine. Set up your virtual enviroment and install the packages from the requirements.txt file
 
 https://github.com/NicolaasDC/Immo_Eliza_ML
 
-# Usage
+## 🤖 Usage
 
 The pipeline.ipynb notebook was to experiment and getting familiar with the code. 
 
@@ -69,11 +69,11 @@ In the train.py file I wrote a script to preprocess the data and create a XGBoos
 
 The predict.py file loads the saved model and can be used to predict the price of a new house. 
 ```
-# Timeline
+## ⏱️ Timeline
 
 This project took five days for completion. The 5 days included the first 3 days
 
-# Addition info
+## 📚 Additional info
 
 This project was done as part of the AI Bootcamp at BeCode.org.
 

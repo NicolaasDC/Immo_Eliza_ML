@@ -35,7 +35,7 @@ After first scraping 10000 houses from www.immoweb.be and then analyzing the dat
 
 # Installation
 
-Clone the repository to your local machine Set up your virtual enviroment and install the packages from the requirements.txt file
+Clone the repository to your local machine. Set up your virtual enviroment and install the packages from the requirements.txt file
 
 https://github.com/NicolaasDC/Immo_Eliza_ML
 
